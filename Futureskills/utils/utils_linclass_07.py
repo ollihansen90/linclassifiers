@@ -33,6 +33,8 @@ def draw1(gewichtsvektor=np.ones(2), theta=0, first=False):
             print(f"Das stimmt leider noch nicht... Gewichtsvektor [{gewichtsvektor[0]},{gewichtsvektor[1]}] und Schwellenwert {theta} sind nicht richtig.")
             return False
 
+from utils import generate_data, Koordinatensystem, Gerade, Vektorfolge
+import matplotlib.pyplot as plt
 def draw2(gewichtsvektor=np.ones(2), theta=0, first=False):
     data, label = generate_data()
 
@@ -58,11 +60,14 @@ def draw2(gewichtsvektor=np.ones(2), theta=0, first=False):
     plt.show()
     #print(data)
     if not first:
-        out = 1*((data@gewichtsvektor-theta)>=0)
-        acc = np.sum(out==label)/N
+        print(data[0])
+        print(data.shape)
+        print(gewichtsvektor.shape)
+        out = 1*((data[:,:2]@gewichtsvektor-theta)>=0)
+        acc = np.mean(out==label)
         if acc==1:
             print(f"Sehr gut! Gewichtsvektor [{gewichtsvektor[0]},{gewichtsvektor[1]}] und  Schwellenwert {theta} sind korrekt!")
             return True
         else:
-            print(f"Das stimmt leider noch nicht... Gewichtsvektor [{gewichtsvektor[0]},{gewichtsvektor[1]}] und Schwellenwert {theta} sind nicht richtig. \nDer Klassifikator hätte eine Genauigkeit von {acc*100}%, {int(N*(1-acc))} Punkte werden also falsch klassifiziert.")
+            print(f"Das stimmt leider noch nicht... Gewichtsvektor [{gewichtsvektor[0]},{gewichtsvektor[1]}] und Schwellenwert {theta} sind nicht richtig. \nDer Klassifikator hätte eine Genauigkeit von {acc*100}%, {int(len(label)*(1-acc))} Punkte werden also falsch klassifiziert.")
             return False
