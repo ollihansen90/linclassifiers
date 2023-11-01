@@ -33,8 +33,6 @@ def draw1(gewichtsvektor=np.ones(2), theta=0, first=False):
             print(f"Das stimmt leider noch nicht... Gewichtsvektor [{gewichtsvektor[0]},{gewichtsvektor[1]}] und Schwellenwert {theta} sind nicht richtig.")
             return False
 
-from utils import generate_data, Koordinatensystem, Gerade, Vektorfolge
-import matplotlib.pyplot as plt
 def draw2(gewichtsvektor=np.ones(2), theta=0, first=False):
     data, label = generate_data()
 
@@ -58,12 +56,8 @@ def draw2(gewichtsvektor=np.ones(2), theta=0, first=False):
     plt.scatter(data[label==-1,0], data[label==-1,1])
     plt.axis("equal");plt.xlim([-size,size]);plt.ylim([-size,size]);plt.axis("off")
     plt.show()
-    #print(data)
     if not first:
-        print(data[0])
-        print(data.shape)
-        print(gewichtsvektor.shape)
-        out = 1*((data[:,:2]@gewichtsvektor-theta)>=0)
+        out = np.sign(data[:,:2]@gewichtsvektor-theta)
         acc = np.mean(out==label)
         if acc==1:
             print(f"Sehr gut! Gewichtsvektor [{gewichtsvektor[0]},{gewichtsvektor[1]}] und  Schwellenwert {theta} sind korrekt!")
