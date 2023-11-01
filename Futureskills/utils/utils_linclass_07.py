@@ -53,7 +53,7 @@ def draw2(gewichtsvektor=np.ones(2), theta=0, first=False):
         gerade.draw(col="r")
         vec.draw()
     plt.scatter(data[label==1,0], data[label==1,1])
-    plt.scatter(data[label==0,0], data[label==0,1])
+    plt.scatter(data[label==-1,0], data[label==-1,1])
     plt.axis("equal");plt.xlim([-size,size]);plt.ylim([-size,size]);plt.axis("off")
     plt.show()
     #print(data)
