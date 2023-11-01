@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from utils import Koordinatensystem, Gerade, Vektorfolge
+from utils import Koordinatensystem, Gerade, Vektorfolge, generate_data
 
 def draw1(gewichtsvektor=np.ones(2), theta=0, first=False):
     data = np.array([[3,6],[-2,7]])
