@@ -1,4 +1,5 @@
 import numpy as np
+import matplotlib.pyplot as plt
 from utils import Vektorfolge, Koordinatensystem, Gerade
 
 def draw(w, data, label):
