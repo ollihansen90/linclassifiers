@@ -22,7 +22,7 @@ def draw1(gewichtsvektor=np.ones(2), theta=0, first=False):
         gerade.draw()
         vec.draw()
     plt.plot(data[:,0], data[:,1], "ro", markersize=5)
-    plt.axis("equal");plt.xlim([-size,size]);plt.ylim([-size,size]);plt.axis("off")
+    plt.axis("scaled");plt.xlim([-size,size]);plt.ylim([-size,size]);plt.axis("off")
     plt.show()
     #print(data)
     if not first:
@@ -54,7 +54,7 @@ def draw2(gewichtsvektor=np.ones(2), theta=0, first=False):
         vec.draw()
     plt.scatter(data[label==1,0], data[label==1,1])
     plt.scatter(data[label==-1,0], data[label==-1,1])
-    plt.axis("equal");plt.xlim([-size,size]);plt.ylim([-size,size]);plt.axis("off")
+    plt.axis("scaled");plt.xlim([-size,size]);plt.ylim([-size,size]);plt.axis("off")
     plt.show()
     if not first:
         out = np.sign(data[:,:2]@gewichtsvektor-theta)

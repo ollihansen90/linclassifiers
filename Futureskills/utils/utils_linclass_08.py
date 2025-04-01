@@ -21,7 +21,7 @@ def draw(w, data, label):
     vec.draw()
     plt.scatter(data[label==1,0], data[label==1,1])
     plt.scatter(data[label==-1,0], data[label==-1,1])
-    plt.axis("equal");plt.xlim([-size,size]);plt.ylim([-size,size]);plt.axis("off")
+    plt.axis("scaled");plt.xlim([-size,size]);plt.ylim([-size,size]);plt.axis("off")
     fig.canvas.draw()
     image_flat = np.frombuffer(fig.canvas.tostring_rgb(), dtype='uint8')
     image = image_flat.reshape(*reversed(fig.canvas.get_width_height()), 3)
