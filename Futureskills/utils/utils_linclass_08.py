@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from utils import Vektorfolge, Koordinatensystem, Gerade
+from .utils import Vektorfolge, Koordinatensystem, Gerade
 
 def draw(w, data, label):
     size = 11
@@ -21,9 +21,9 @@ def draw(w, data, label):
     vec.draw()
     plt.scatter(data[label==1,0], data[label==1,1])
     plt.scatter(data[label==-1,0], data[label==-1,1])
-    plt.axis("scaled");plt.xlim([-size,size]);plt.ylim([-size,size]);plt.axis("off")
+    plt.axis("equal");plt.xlim([-size,size]);plt.ylim([-size,size]);plt.axis("off")
     fig.canvas.draw()
-    image_flat = np.frombuffer(fig.canvas.buffer_rgba(), dtype='uint8')
-    image = image_flat.reshape(*reversed(fig.canvas.get_width_height()), 4)[...,:3]
+    image_flat = np.frombuffer(fig.canvas.tostring_rgb(), dtype='uint8')
+    image = image_flat.reshape(*reversed(fig.canvas.get_width_height()), 3)
     plt.close()
     return image
