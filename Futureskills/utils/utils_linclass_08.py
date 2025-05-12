@@ -23,7 +23,7 @@ def draw(w, data, label):
     plt.scatter(data[label==-1,0], data[label==-1,1])
     plt.axis("equal");plt.xlim([-size,size]);plt.ylim([-size,size]);plt.axis("off")
     fig.canvas.draw()
-    image_flat = np.frombuffer(fig.canvas.tostring_rgb(), dtype='uint8')
+    image_flat = np.frombuffer(fig.canvas.to_string_rgb(), dtype=np.uint8)
     image = image_flat.reshape(*reversed(fig.canvas.get_width_height()), 3)
     plt.close()
     return image
